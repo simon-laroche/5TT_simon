@@ -1,16 +1,5 @@
 menu_liste = ["quitter le menu", "afficher le catalogue", "enregistrez un noouveau client", "ajouter un article au panier du client", "afficher la fiche d'un client" ]
-def affiche_menu():
-    """Affiche le menu principal."""
-    print("\nMenu principal :")
-    print("0 : quitter le programme")
-    print("1 : afficher le catalogue")
-    print("2 : enregistrez un nouveau client")
-    print("3 : ajouter un artticle au panier du client")
-    print("4 : afficher la fiche d'un client")
-
-
-   
-
+continu = True 
 catalogue = {
     'pain_blanc' :15,
     'pain_complet' :8,
@@ -29,31 +18,72 @@ clients = {
             }
     }
 }
-choix = input ("quel est votre choix : ")
+
+while continu:
+    for option in menu_liste:
+        print(f"{menu_liste}", {option})
+        menu_liste += 1
+
+choix =input("entrez votre choix")
+
 if choix == "0":
-    print("au revoir")
+    print("au revoir et merci d'avoir utiliser le programme")
+    continu = False
 
+elif choix == "1":
+    print("nom du produit", end="")
+    print("quantite")
+    for item, stock in catalogue.items():
+        print(f"{item < 10}{stock > 10}")
 
-
-
-
-
-
-print("nom du produit et la quantité")
-for ref, produit in catalogue.items():  
-    print(produit["nom"], produit["quantité"])
-
-email = input("email : ")
-
-if email in clients :
-    print("client déjà exixstant")
-else : 
-    nom = input("nom : ")
-    prenom = input("prenom: ")
+elif choix == "2" :
+    email = input ("entrez une adressez mail ")
+    name = input ("name")
+    surname = input ("surname")
 
     clients[email] = {
-        "nom" : nom,
-        "prenom": prenom,
-        "panier" : {}
+       " name" : "name",
+       "surname" : "surname" ,
+        "panier" :{}
     }
-    print ("client ajouté ")
+
+
+elif choix == "3" :
+    boucle = True
+    clients = input("entrez une adresse mail")
+
+    if clients.get(clients, None) == None :
+        
+else:
+    while boucle: 
+        item_choix = input("choissisez votre article")
+        if catalogue.get(item_choix, None) == None:
+            print("article selectionner n'existe pas")
+        else: 
+            print(f"{item_choix} : {catalogue.get(item_choix)}")
+            qut_input = int(input("choissisez la quantite"))
+        
+        if qut_input > catalogue.get(item_choix):
+            print("pas article en stock")
+
+        else: 
+
+            if clients [clients]["panier"].get(item_choix, None) == None :
+                clients[clients]["panier"][item_choix] = qut_input 
+                catalogue[item_choix] -= qut_input
+
+            else : 
+                clients[clients]["panier"][item_choix] += qut_input
+                catalogue[item_choix] -= qut_input
+
+insert_choix = str.lower(input("voulez-vous continuer "))
+if insert_choix == "non " :
+    boucle = False
+
+elif choix == "4" :
+
+
+
+
+
+
